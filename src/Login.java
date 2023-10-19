@@ -36,28 +36,44 @@ public class Login extends JFrame{
 
                 if(userName.equals("Admin") && password.equals("1234")){
                     JOptionPane.showMessageDialog(rootPane, "Login Sucessful");
+                }
                 else {
                     JOptionPane.showMessageDialog(rootPane, "Login failed!");
                 }
-                }
+                
                 
             }
         });
 
+        btnClear = new JButton("Clear");
+        btnClear.setFont(mainFont);
+        btnClear.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                tfUserName.setText("");
+                jpPassword.setText("");
+            }
 
-        
+        });
         JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(1, 4, 5, 5));
+        formPanel.setLayout(new GridLayout(1,4, 5, 5));
+        formPanel.add(lbUserName);
+        formPanel.add(tfUserName);
+        formPanel.add(lbPassword);
+        formPanel.add(jpPassword);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(1, 2, 5, 5));
+        buttonPanel.add(btnLogin);
+        buttonPanel.add(btnClear);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        mainPanel.add(formPanel, BorderLayout.NORTH);
+        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-
-
+        this.add(mainPanel);
 
         setTitle( "Login Form");
         setSize(500,300);
